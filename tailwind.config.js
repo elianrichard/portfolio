@@ -6,7 +6,12 @@ module.exports = {
     "./modules/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        paleBlack: "rgba(0,0,0,0.7)",
+        mainRed: "rgba(239,68,68,0.9)",
+      },
+    },
   },
   plugins: [require("prettier-plugin-tailwindcss")],
 };

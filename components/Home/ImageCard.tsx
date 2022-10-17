@@ -58,9 +58,9 @@ const ImageCard = ({ image, isSelected, setSelected }: Props) => {
         <motion.p
           variants={childrenVar}
           transition={{ duration: isSelected ? 0.3 : 0.1 }}
-          className="w-fit rounded-md bg-white px-4 py-2 text-sm font-bold uppercase "
+          className="w-fit rounded-md bg-white px-4 py-2 text-sm font-medium uppercase"
         >
-          Photography
+          UI/UX Design
         </motion.p>
         <motion.p
           variants={childrenVar}
