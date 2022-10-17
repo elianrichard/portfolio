@@ -35,7 +35,7 @@ const ImageCard = ({ image, isSelected, setSelected }: Props) => {
           isSelected ? "bg-black/0" : "bg-black/40"
         } transition-bg absolute z-20 h-full w-full duration-700 ease-in-out`}
       />
-      <motion.div
+      <div
         className={`absolute bottom-0 h-1/2 w-full ${
           isSelected ? "bg-gradient-to-t from-black/60" : ""
         } z-10 transition-all duration-700 ease-in-out`}
