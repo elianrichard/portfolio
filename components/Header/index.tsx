@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, Variants } from "framer-motion";
 
-import { BiMenu } from "react-icons/bi";
 import {
   FaFacebookF,
   FaYoutube,
@@ -10,13 +10,58 @@ import {
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-const index = () => {
+const Index = () => {
+  const [navOpen, setNavOpen] = useState<boolean>(false);
+
+  const menuIconTopVar: Variants = {
+    active: {
+      top: "50%",
+      rotate: 45,
+      y: "-50%",
+    },
+    inactive: {
+      top: "0%",
+      rotate: 0,
+      y: "-50%",
+    },
+  };
+  const menuIconBotVar: Variants = {
+    active: {
+      bottom: "50%",
+      rotate: -45,
+      y: "50%",
+    },
+    inactive: {
+      bottom: "0%",
+      rotate: 0,
+      y: "50%",
+    },
+  };
+
   return (
     <div className="fixed flex h-screen w-20 flex-col bg-white">
       <div className="flex aspect-square w-full items-center justify-center bg-black">
-        <IconContext.Provider value={{ className: "text-white h-10 w-10" }}>
-          <BiMenu />
-        </IconContext.Provider>
+        <motion.div
+          transition={{ type: "tween", duration: 0.4 }}
+          whileHover={{ height: "26px" }}
+          className={`relative h-[20px] w-[30px] cursor-pointer`}
+          onClick={() => setNavOpen(!navOpen)}
+        >
+          <motion.div
+            variants={menuIconTopVar}
+            animate={navOpen ? "active" : "inactive"}
+            className="absolute top-0 h-1 w-full -translate-y-[50%] rounded-md bg-white"
+          />
+          <motion.div
+            animate={navOpen ? { opacity: 0 } : { opacity: 1 }}
+            className="absolute top-1/2 h-1 w-full -translate-y-[50%] rounded-md bg-white"
+          />
+          <motion.div
+            variants={menuIconBotVar}
+            animate={navOpen ? "active" : "inactive"}
+            className="absolute bottom-0 h-1 w-full rounded-md bg-white"
+          />
+        </motion.div>
       </div>
       <div className="flex h-full w-full flex-col items-center justify-center gap-10">
         <IconContext.Provider value={{ className: "text-black h-6 w-6" }}>
@@ -31,4 +76,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
