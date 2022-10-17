@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
+import { IconContext } from "react-icons";
 
 import {
   FaFacebookF,
@@ -8,7 +9,8 @@ import {
   FaLinkedinIn,
   FaBehance,
 } from "react-icons/fa";
-import { IconContext } from "react-icons";
+
+import NavCard from "./NavCard";
 
 const Index = () => {
   const [navOpen, setNavOpen] = useState<boolean>(false);
@@ -72,6 +74,7 @@ const Index = () => {
           <FaBehance />
         </IconContext.Provider>
       </div>
+      <NavCard />
     </div>
   );
 };
