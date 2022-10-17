@@ -1,6 +1,6 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface Props {
   image: StaticImageData;
@@ -9,30 +9,16 @@ interface Props {
 }
 
 const ImageCard = ({ image, isSelected, setSelected }: Props) => {
-  const containerVar = {
-    hidden: {
-      opacity: 0,
-      y: -50,
-      transition: {
-        type: "spring",
-        bounce: 0.2,
-        duration: 0.3,
-      },
-    },
+  const containerVar: Variants = {
     show: {
-      opacity: 1,
-      y: 0,
       transition: {
-        staggerChildren: 0.2,
-        type: "spring",
-        bounce: 0.2,
-        duration: 0.7,
-        delay: 0.3,
+        staggerChildren: 0.05,
+        delayChildren: 0.3,
       },
     },
   };
 
-  const childrenVar = {
+  const childrenVar: Variants = {
     hidden: { opacity: 0, y: -50 },
     show: { opacity: 1, y: 0 },
   };
@@ -49,7 +35,7 @@ const ImageCard = ({ image, isSelected, setSelected }: Props) => {
           isSelected ? "bg-black/0" : "bg-black/40"
         } transition-bg absolute z-20 h-full w-full duration-700 ease-in-out`}
       />
-      <div
+      <motion.div
         className={`absolute bottom-0 h-1/2 w-full ${
           isSelected ? "bg-gradient-to-t from-black/60" : ""
         } z-10 transition-all duration-700 ease-in-out`}
@@ -65,13 +51,24 @@ const ImageCard = ({ image, isSelected, setSelected }: Props) => {
       />
       <motion.div
         variants={containerVar}
-        animate={isSelected ? "show" : "hidden"}
+        initial="hidden"
+        animate={isSelected ? "show" : ""}
         className="absolute bottom-10 left-10 z-30 flex min-w-[500px] flex-col gap-5"
       >
-        <p className="w-fit rounded-md bg-white px-4 py-2 text-sm font-bold uppercase ">
+        <motion.p
+          variants={childrenVar}
+          transition={{ duration: isSelected ? 0.3 : 0.1 }}
+          className="w-fit rounded-md bg-white px-4 py-2 text-sm font-bold uppercase "
+        >
           Photography
-        </p>
-        <p className="text-5xl font-bold text-white ">St. Petersburg</p>
+        </motion.p>
+        <motion.p
+          variants={childrenVar}
+          transition={{ duration: isSelected ? 0.3 : 0.1 }}
+          className="text-5xl font-bold text-white "
+        >
+          St. Petersburg
+        </motion.p>
       </motion.div>
     </div>
   );
