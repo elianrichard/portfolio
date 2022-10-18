@@ -76,6 +76,7 @@ const ImageCard = ({ data, indexing, isSelected, setSelected }: Props) => {
       />
       <Image
         src={data.image}
+        priority={pageNum === 0 ? true : false}
         alt="Scenery"
         layout="fill"
         objectFit="cover"

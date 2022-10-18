@@ -48,30 +48,21 @@ const ContactDetail = ({ isAnimated }: Props) => {
           GET IN TOUCH
         </motion.p>
         {contactDetails.map((el, i) => {
-          if (el[1])
-            return (
-              <motion.a
-                href={el[1]}
-                target="_blank"
-                rel="norefferer"
-                key={i}
-                className="w-fit transition-all duration-300 ease-out hover:text-mainRed"
-                variants={childrenVar}
-                transition={childrenTransition}
-              >
-                {el[0]}
-              </motion.a>
-            );
-          else
-            return (
-              <motion.p
-                variants={childrenVar}
-                transition={childrenTransition}
-                key={i}
-              >
-                {el[0]}
-              </motion.p>
-            );
+          return (
+            <motion.a
+              href={el[1] || "#"}
+              target="_blank"
+              rel="norefferer"
+              key={i}
+              className={`w-fit transition-all duration-300 ease-out ${
+                el[1] ? "hover:text-mainRed" : "pointer-events-none"
+              }`}
+              variants={childrenVar}
+              transition={childrenTransition}
+            >
+              {el[0]}
+            </motion.a>
+          );
         })}
       </div>
     </motion.div>

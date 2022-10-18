@@ -16,8 +16,9 @@ const imageList = [
   { image: Image3, category: "Branding Logo", title: "Instagram" },
   { image: Image4, category: "3D animation", title: "School of Motion" },
   { image: Image5, category: "Photography", title: "Amazon" },
-  { image: Image5, category: "Craft CMS", title: "Wordpress" },
-  { image: Image5, category: "Interface Design", title: "Figma" },
+  { image: Image4, category: "Craft CMS", title: "Wordpress" },
+  { image: Image3, category: "Interface Design", title: "Subway" },
+  { image: Image2, category: "Lettering", title: "Adobe" },
 ];
 
 const Home: NextPage = () => {
