@@ -44,7 +44,7 @@ const Index = () => {
     <nav
       className={`before:transition-bg fixed z-50 h-screen w-fit before:absolute before:h-screen before:w-screen ${
         navOpen ? "before:bg-black/50" : "before:pointer-events-none"
-      } before:duration-500 before:ease-in-out`}
+      } selection:bg-transparent selection:text-mainRed before:duration-500 before:ease-in-out`}
     >
       <NavCard isActive={navOpen} />
       <div className="relative flex h-screen w-20 flex-col border-r-[1px] border-black/10 bg-white">

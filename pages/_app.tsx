@@ -5,10 +5,12 @@ import Header from "../components/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-  <main>
-    <Header />
-    <Component {...pageProps} />
-  </main>
+    <>
+      <Header />
+      <main className="selection:bg-transparent selection:text-mainRed">
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }
 
