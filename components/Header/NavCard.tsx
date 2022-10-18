@@ -92,9 +92,9 @@ const NavCard = ({ isActive }: Props) => {
           {selectedMenu === 0 ? (
             <AboutDetail isAnimated={isAnimated} />
           ) : selectedMenu === 1 ? (
-            <ServicesDetail />
+            <ServicesDetail isAnimated={isAnimated} />
           ) : (
-            <ContactDetail />
+            <ContactDetail isAnimated={isAnimated} />
           )}
         </div>
       </div>

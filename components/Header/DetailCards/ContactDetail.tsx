@@ -1,6 +1,10 @@
 import React from "react";
 
-const ContactDetail = () => {
+interface Props {
+  isAnimated: boolean;
+}
+
+const ContactDetail = ({ isAnimated }: Props) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="text-3xl font-medium">
