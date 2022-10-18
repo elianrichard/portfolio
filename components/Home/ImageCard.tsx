@@ -4,13 +4,13 @@ import { motion, Variants } from "framer-motion";
 
 interface Props {
   data: { image: StaticImageData; category: string; title: string };
-  index: number;
-  count: number;
+  indexing: { index: number; pageNum: number; cardCount: number };
   isSelected: boolean;
   setSelected: () => void;
 }
 
-const ImageCard = ({ data, index, count, isSelected, setSelected }: Props) => {
+const ImageCard = ({ data, indexing, isSelected, setSelected }: Props) => {
+  const { index, pageNum, cardCount } = indexing;
   const containerVar: Variants = {
     show: {
       transition: {
@@ -26,7 +26,7 @@ const ImageCard = ({ data, index, count, isSelected, setSelected }: Props) => {
   };
 
   const maximumCardWidthSelected = useMemo(() => {
-    switch (count) {
+    switch (cardCount) {
       case 1:
         return "max-w-[100%]";
       case 2:
@@ -40,10 +40,10 @@ const ImageCard = ({ data, index, count, isSelected, setSelected }: Props) => {
       default:
         return "max-w-[100%]";
     }
-  }, [count]);
+  }, [cardCount]);
 
   const maximumCardWidthUnSelected = useMemo(() => {
-    switch (count) {
+    switch (cardCount) {
       case 1:
         return "max-w-[0%]";
       case 2:
@@ -55,7 +55,7 @@ const ImageCard = ({ data, index, count, isSelected, setSelected }: Props) => {
       case 5:
         return "max-w-[10%]";
     }
-  }, [count]);
+  }, [cardCount]);
 
   return (
     <div
@@ -98,7 +98,9 @@ const ImageCard = ({ data, index, count, isSelected, setSelected }: Props) => {
               PORTFOLIO
             </motion.p>
             <p className="absolute right-0">
-              {index < 9 ? `0${index + 1}` : index + 1}
+              {index < 9
+                ? `0${pageNum * 5 + index + 1}`
+                : pageNum * 5 + index + 1}
             </p>
           </div>
         </div>
