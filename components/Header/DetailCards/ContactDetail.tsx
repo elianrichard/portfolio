@@ -55,7 +55,7 @@ const ContactDetail = ({ isAnimated }: Props) => {
                 target="_blank"
                 rel="norefferer"
                 key={i}
-                className="transition-all duration-300 ease-out hover:text-mainRed"
+                className="w-fit transition-all duration-300 ease-out hover:text-mainRed"
                 variants={childrenVar}
                 transition={childrenTransition}
               >

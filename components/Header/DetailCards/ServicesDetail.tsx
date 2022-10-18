@@ -81,9 +81,13 @@ const ServicesDetail = ({ isAnimated }: Props) => {
               key={i}
               variants={childrenVar}
               transition={childrenTransition}
-              className="transition-all duration-300 ease-out hover:text-mainRed"
             >
-              <a href={el[1]} target="_blank" rel="noreferrer">
+              <a
+                href={el[1]}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-all duration-300 ease-out hover:text-mainRed"
+              >
                 {el[0]}
               </a>
             </motion.li>
