@@ -11,11 +11,6 @@ const ServicesDetail = ({ isAnimated }: Props) => {
       transition: { staggerChildren: 0.05, delayChildren: 0.1 },
     },
   };
-  const container2Var: Variants = {
-    show: {
-      transition: { staggerChildren: 0.05, delayChildren: 0.1, delay: 1 },
-    },
-  };
   const childrenVar: Variants = {
     hidden: { opacity: 0, y: 25 },
     show: { opacity: 1, y: 0 },
@@ -36,14 +31,14 @@ const ServicesDetail = ({ isAnimated }: Props) => {
   ];
 
   const experienceLists = [
-    "Facebook",
-    "Instagram",
-    "Figma",
-    "LinkedIn",
-    "Twitter",
-    "TikTok",
-    "Google",
-    "Grab",
+    ["Facebook", "https://google.com"],
+    ["Instagram", "https://google.com"],
+    ["Figma", "https://google.com"],
+    ["LinkedIn", "https://google.com"],
+    ["Twitter", "https://google.com"],
+    ["TikTok", "https://google.com"],
+    ["Google", "https://google.com"],
+    ["Grab", "https://google.com"],
   ];
 
   return (
@@ -86,8 +81,11 @@ const ServicesDetail = ({ isAnimated }: Props) => {
               key={i}
               variants={childrenVar}
               transition={childrenTransition}
+              className="transition-all duration-300 ease-out hover:text-mainRed"
             >
-              {el}
+              <a href={el[1]} target="_blank" rel="noreferrer">
+                {el[0]}
+              </a>
             </motion.li>
           ))}
         </motion.ul>

@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   }, [debounceSelected]);
 
   return (
-    <div className="flex h-screen w-full bg-teal-200 pl-20">
+    <div className="flex h-screen w-full bg-black pl-20">
       {imageList.map((el, i) => (
         <ImageCard
           image={el}
