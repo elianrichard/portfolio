@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import _ from "lodash";
 
 import Image1 from "../asset/images/image1.webp";
@@ -12,7 +12,13 @@ import ImageCard from "../components/Home/ImageCard";
 
 const Home: NextPage = () => {
   const [selectedCard, setSelectedCard] = useState<number>(0);
-  const imageList = [Image1, Image2, Image3, Image4, Image5];
+  const imageList = [
+    { image: Image1, category: "UI/UX Design", title: "Facebook Landing Page" },
+    { image: Image2, category: "Web Development", title: "Twitter Account" },
+    { image: Image3, category: "Branding Logo", title: "Instagram" },
+    { image: Image4, category: "3D animation", title: "School of Motion" },
+    { image: Image5, category: "Photography", title: "St. Petersburg" },
+  ];
 
   const debounceSelected = useMemo(
     () => _.debounce((i: number) => setSelectedCard(i), 200),
@@ -27,8 +33,10 @@ const Home: NextPage = () => {
     <div className="flex h-screen w-full bg-black pl-20">
       {imageList.map((el, i) => (
         <ImageCard
-          image={el}
           key={i}
+          data={el}
+          index={i}
+          count={imageList.length}
           isSelected={i === selectedCard}
           setSelected={() => debounceSelected(i)}
         />

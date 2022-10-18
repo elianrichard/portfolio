@@ -8,12 +8,21 @@ import {
   FaTwitter,
   FaLinkedinIn,
   FaBehance,
+  FaInstagram,
 } from "react-icons/fa";
 
 import NavCard from "./NavCard";
 
 const Index = () => {
   const [navOpen, setNavOpen] = useState<boolean>(false);
+  const socialLists = [
+    { link: "https://facebook.com", icon: <FaFacebookF /> },
+    { link: "https://youtube.com", icon: <FaYoutube /> },
+    { link: "https://twitter.com", icon: <FaTwitter /> },
+    { link: "https://linkedin.com", icon: <FaLinkedinIn /> },
+    { link: "https://behance.com", icon: <FaBehance /> },
+    { link: "https://instagram.com", icon: <FaInstagram /> },
+  ];
 
   const menuIconTopVar: Variants = {
     active: {
@@ -72,12 +81,17 @@ const Index = () => {
           </motion.div>
         </div>
         <div className="flex h-[90%] w-full flex-col items-center justify-center gap-10">
-          <IconContext.Provider value={{ className: "text-black h-6 w-6" }}>
-            <FaFacebookF />
-            <FaYoutube />
-            <FaTwitter />
-            <FaLinkedinIn />
-            <FaBehance />
+          <IconContext.Provider
+            value={{
+              className:
+                "text-black h-6 w-6 hover:text-mainRed transition-all duration-300 ease-in-out hover:scale-110",
+            }}
+          >
+            {socialLists.map((el, i) => (
+              <a href={el.link} key={i}>
+                {el.icon}
+              </a>
+            ))}
           </IconContext.Provider>
         </div>
       </div>
