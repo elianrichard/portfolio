@@ -6,11 +6,19 @@ interface Props {
   data: { image: StaticImageData; category: string; title: string };
   indexing: { index: number; pageNum: number; cardCount: number };
   isSelected: boolean;
+  childrenDivVar: Variants;
   setSelected: () => void;
 }
 
-const ImageCard = ({ data, indexing, isSelected, setSelected }: Props) => {
+const ImageCard = ({
+  data,
+  indexing,
+  childrenDivVar,
+  isSelected,
+  setSelected,
+}: Props) => {
   const { index, pageNum, cardCount } = indexing;
+
   const containerVar: Variants = {
     show: {
       transition: {
@@ -58,15 +66,16 @@ const ImageCard = ({ data, indexing, isSelected, setSelected }: Props) => {
   }, [cardCount]);
 
   return (
-    <div
+    <motion.div
+      variants={childrenDivVar}
       className={`relative h-full w-full ${
         isSelected ? maximumCardWidthSelected : maximumCardWidthUnSelected
-      } overflow-hidden transition-all duration-300 ease-in-out`}
+      } overflow-hidden transition-all duration-300 ease-out`}
       onMouseEnter={setSelected}
     >
       <div
         className={`${
-          isSelected ? "bg-black/0" : "bg-black/40"
+          isSelected ? "bg-black/0" : "bg-black/50"
         } transition-bg absolute z-20 h-full w-full duration-700 ease-in-out`}
       />
       <div
@@ -125,7 +134,7 @@ const ImageCard = ({ data, indexing, isSelected, setSelected }: Props) => {
           </motion.p>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

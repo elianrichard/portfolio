@@ -46,6 +46,7 @@ const NavCard = ({ isActive }: Props) => {
 
   return (
     <motion.div
+      initial={false}
       animate={isActive ? "show" : "hidden"}
       variants={containerVar}
       transition={{ ease: "easeInOut", duration: 0.5 }}
