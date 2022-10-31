@@ -1,24 +1,30 @@
-import { server } from "./config";
+import Image1 from "./asset/images/image1.webp";
+import Image2 from "./asset/images/image2.webp";
+import Image3 from "./asset/images/image3.webp";
+import Image4 from "./asset/images/image4.webp";
+import Image5 from "./asset/images/image5.webp";
+import Image6 from "./asset/images/image6.webp";
+import Image7 from "./asset/images/image7.webp";
+import Image8 from "./asset/images/image8.webp";
 
 export const articles = [
   {
     id: 1,
     title: "Facebook Landing Page",
     category: "UI/UX Design",
-    image: `${server}/images/image1.webp`,
-    // image: "/images/Image1.webp",
+    image: Image1,
   },
   {
     id: 2,
     title: "Twitter",
     category: "Web Development",
-    image: `${server}/images/image2.webp`,
+    image: Image1,
   },
   {
     id: 3,
     title: "Instagram",
     category: "Branding Logo",
-    image: `${server}/images/image3.webp`,
+    image: Image1,
   },
   // {
   //   id: 4,
