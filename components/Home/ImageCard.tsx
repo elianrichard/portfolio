@@ -70,7 +70,7 @@ const ImageCard = ({
       variants={childrenDivVar}
       className={`relative h-full w-full ${
         isSelected ? maximumCardWidthSelected : maximumCardWidthUnSelected
-      } overflow-hidden transition-all duration-300 ease-out`}
+      } overflow-hidden transition-all duration-300 ease-out cursor-pointer`}
       onMouseEnter={setSelected}
     >
       <div
