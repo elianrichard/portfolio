@@ -5,20 +5,20 @@ export const articles = [
     id: 1,
     title: "Facebook Landing Page",
     category: "UI/UX Design",
-    image: `${server}/images/Image1.webp`,
+    image: `${server}/images/image1.webp`,
     // image: "/images/Image1.webp",
   },
   {
     id: 2,
     title: "Twitter",
     category: "Web Development",
-    image: `${server}/images/Image2.webp`,
+    image: `${server}/images/image2.webp`,
   },
   {
     id: 3,
     title: "Instagram",
     category: "Branding Logo",
-    image: `${server}/images/Image3.webp`,
+    image: `${server}/images/image3.webp`,
   },
   // {
   //   id: 4,

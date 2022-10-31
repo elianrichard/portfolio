@@ -19,16 +19,16 @@ import Image8 from "../public/images/image8.webp";
 
 import ImageCard from "../components/Home/ImageCard";
 
-const articles = [
-  { image: Image1, category: "UI/UX Design", title: "Facebook Landing Page" },
-  { image: Image2, category: "Web Development", title: "Twitter Account" },
-  { image: Image3, category: "Branding Logo", title: "Instagram" },
-  { image: Image4, category: "3D animation", title: "School of Motion" },
-  { image: Image5, category: "Photography", title: "Amazon" },
-  { image: Image6, category: "Craft CMS", title: "Wordpress" },
-  { image: Image7, category: "Interface Design", title: "Subway" },
-  { image: Image8, category: "Lettering", title: "Adobe" },
-];
+// const articles = [
+//   { image: Image1, category: "UI/UX Design", title: "Facebook Landing Page" },
+//   { image: Image2, category: "Web Development", title: "Twitter Account" },
+//   { image: Image3, category: "Branding Logo", title: "Instagram" },
+//   { image: Image4, category: "3D animation", title: "School of Motion" },
+//   { image: Image5, category: "Photography", title: "Amazon" },
+//   { image: Image6, category: "Craft CMS", title: "Wordpress" },
+//   { image: Image7, category: "Interface Design", title: "Subway" },
+//   { image: Image8, category: "Lettering", title: "Adobe" },
+// ];
 
 interface Props {
   articles: Array<ArticlesRes>;
@@ -41,8 +41,9 @@ interface ArticlesRes {
   image: StaticImageData;
 }
 
-const Home = () => {
-  // const Home = ({ articles }: Props) => {
+// const Home = () => {
+const Home = ({ articles }: Props) => {
+  console.log(articles);
   const [selectedCard, setSelectedCard] = useState<number>(0);
   const [pageNum, setPageNum] = useState<number>(0);
   const pageTotal = Math.floor(articles.length / 5);
@@ -50,8 +51,8 @@ const Home = () => {
   const showLists = useMemo(() => {
     const lists = articles.slice(pageNum * 5, (pageNum + 1) * 5);
     return lists;
-  }, [pageNum]);
-  // }, [articles, pageNum]);
+    // }, [pageNum]);
+  }, [articles, pageNum]);
 
   useEffect(() => {
     setSelectedCard(0);
@@ -161,11 +162,11 @@ const Home = () => {
 
 export default Home;
 
-// export const getStaticProps = async () => {
-//   const res = await fetch(`${server}/api/articles`);
-//   const articles = await res.json();
+export const getStaticProps = async () => {
+  const res = await fetch(`${server}/api/articles`);
+  const articles = await res.json();
 
-//   return {
-//     props: { articles },
-//   };
-// };
+  return {
+    props: { articles },
+  };
+};
