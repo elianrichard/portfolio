@@ -76,30 +76,50 @@ const Home: NextPage = () => {
       {pageTotal > 0 && (
         <div className="absolute right-10 bottom-10 z-50 flex items-center justify-center gap-5">
           <IconContext.Provider
-            value={{ className: "text-white text-xl cursor-pointer" }}
+            value={{
+              className: `text-white text-2xl bg-white/20 p-1 rounded-full`,
+            }}
           >
-            <MdKeyboardArrowLeft
-              onClick={async () => {
-                if (!pageNum) return;
-                await containerControl.start("exit");
-                setPageNum(pageNum - 1);
-                await containerControl.start("hidden");
-                await containerControl.start("show");
-              }}
-            />
-            <p className="flex w-20 justify-center text-5xl text-white items-end gap-2">
+            <motion.div
+              whileHover={pageNum ? { scale: 1.5 } : {}}
+              whileTap={pageNum ? { scale: 1.3 } : {}}
+            >
+              <MdKeyboardArrowLeft
+                onClick={async () => {
+                  if (!pageNum) return;
+                  await containerControl.start("exit");
+                  setPageNum(pageNum - 1);
+                  await containerControl.start("hidden");
+                  await containerControl.start("show");
+                }}
+                className={
+                  pageNum ? "cursor-pointer hover:bg-mainRed/40" : "opacity-50"
+                }
+              />
+            </motion.div>
+            <p className="flex w-20 items-end justify-center gap-2 text-5xl text-white">
               {pageNum + 1}
               <span className="text-xl"> / {pageTotal + 1}</span>
             </p>
-            <MdKeyboardArrowRight
-              onClick={async () => {
-                if (pageNum === pageTotal) return;
-                await containerControl.start("exit");
-                setPageNum(pageNum + 1);
-                await containerControl.start("hidden");
-                await containerControl.start("show");
-              }}
-            />
+            <motion.div
+              whileHover={pageNum !== pageTotal ? { scale: 1.5 } : {}}
+              whileTap={pageNum !== pageTotal ? { scale: 1.3 } : {}}
+            >
+              <MdKeyboardArrowRight
+                onClick={async () => {
+                  if (pageNum === pageTotal) return;
+                  await containerControl.start("exit");
+                  setPageNum(pageNum + 1);
+                  await containerControl.start("hidden");
+                  await containerControl.start("show");
+                }}
+                className={
+                  pageNum !== pageTotal
+                    ? "cursor-pointer hover:bg-mainRed/40"
+                    : "opacity-50"
+                }
+              />
+            </motion.div>
           </IconContext.Provider>
         </div>
       )}
