@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, Variants } from "framer-motion";
+import { useRouter } from "next/router";
+import { ArticleType } from "../../data";
 
 interface Props {
-  data: { image: StaticImageData; category: string; title: string };
+  data: ArticleType;
   indexing: { index: number; pageNum: number; cardCount: number };
   isSelected: boolean;
   childrenDivVar: Variants;
@@ -18,6 +20,7 @@ const ImageCard = ({
   setSelected,
 }: Props) => {
   const { index, pageNum, cardCount } = indexing;
+  const router = useRouter();
 
   const containerVar: Variants = {
     show: {
@@ -70,8 +73,9 @@ const ImageCard = ({
       variants={childrenDivVar}
       className={`relative h-full w-full ${
         isSelected ? maximumCardWidthSelected : maximumCardWidthUnSelected
-      } overflow-hidden transition-all duration-300 ease-out cursor-pointer`}
+      } cursor-pointer overflow-hidden transition-all duration-300 ease-out`}
       onMouseEnter={setSelected}
+      onClick={() => router.push(`/work/${data.id}`)}
     >
       <div
         className={`${

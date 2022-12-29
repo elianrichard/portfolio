@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 import Image1 from "./asset/images/image1.webp";
 import Image2 from "./asset/images/image2.webp";
 import Image3 from "./asset/images/image3.webp";
@@ -6,6 +8,13 @@ import Image5 from "./asset/images/image5.webp";
 import Image6 from "./asset/images/image6.webp";
 import Image7 from "./asset/images/image7.webp";
 import Image8 from "./asset/images/image8.webp";
+
+export interface ArticleType {
+  id: number;
+  title: string;
+  category: string;
+  image: StaticImageData;
+}
 
 export const articles = [
   {
