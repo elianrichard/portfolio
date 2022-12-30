@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { useRouter } from "next/router";
 import { ArticleType } from "../../data";

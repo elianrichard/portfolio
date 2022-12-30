@@ -9,13 +9,16 @@ import {
   FaLinkedinIn,
   FaBehance,
   FaInstagram,
+  FaHome,
 } from "react-icons/fa";
 
 import NavCard from "./NavCard";
+import Link from "next/link";
 
 const Index = () => {
   const [navOpen, setNavOpen] = useState<boolean>(false);
   const socialLists = [
+    { link: "/", icon: <FaHome /> },
     { link: "https://facebook.com", icon: <FaFacebookF /> },
     { link: "https://youtube.com", icon: <FaYoutube /> },
     { link: "https://twitter.com", icon: <FaTwitter /> },
@@ -84,14 +87,18 @@ const Index = () => {
           <IconContext.Provider
             value={{
               className:
-                "text-black h-6 w-6 hover:text-mainRed transition-all duration-300 ease-in-out hover:scale-110",
+                "text-black h-6 w-6 hover:text-mainRed transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer",
             }}
           >
-            {socialLists.map((el, i) => (
-              <a href={el.link} key={i}>
-                {el.icon}
-              </a>
-            ))}
+            {socialLists.map((el, i) => {
+              return (
+                <div key={i}>
+                  <Link href={el.link}>
+                    <a>{el.icon}</a>
+                  </Link>
+                </div>
+              );
+            })}
           </IconContext.Provider>
         </div>
       </div>
